@@ -119,13 +119,13 @@ const AddProject = () => {
 
                 <div className="w-full sm:col-span-4">
                   <Label className="block text-sm font-medium leading-6 text-gray-900">
-                    Languages name
+                    Languages and frameworks name
                   </Label>
                   <div className="mt-2">
                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
                       <Textarea
                         type="text"
-                        placeholder="Enter your languages name used in this project...."
+                        placeholder="Enter your languages and frameworks name used in this project...."
                         value={technologies}
                         onChange={(e) => setTechnologies(e.target.value)}
                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
@@ -152,8 +152,11 @@ const AddProject = () => {
                         <SelectContent>
                           <SelectItem value="Full-Stack">Full-Stack</SelectItem>
                           <SelectItem value="MERN">MERN</SelectItem>
-                          <SelectItem value="React.js">React.js</SelectItem>
-                          <SelectItem value="Next.js">Next.js</SelectItem>
+                          <SelectItem value="MEAN">MEAN</SelectItem>
+                          <SelectItem value="MEVN">MEVN</SelectItem>
+                          <SelectItem value="REACT">REACT</SelectItem>
+                          <SelectItem value=".NET">.NET</SelectItem>
+                          <SelectItem value="Flutter">Flutter</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>

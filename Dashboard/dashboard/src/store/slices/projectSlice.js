@@ -8,7 +8,6 @@ const projectSlice = createSlice({
     loading: false,
     error: null,
     message: null,
-    singleProject: {},
   },
   reducers: {
     // getAllProject
@@ -59,6 +58,22 @@ const projectSlice = createSlice({
       state.error = action.payload;
       state.message = null;
     },
+    // updateProject
+    updateProjectRequest(state, action) {
+      state.loading = true;
+      state.error = null;
+      state.message = null;
+    },
+    updateProjectSuccess(state, action) {
+      state.loading = false;
+      state.error = null;
+      state.message = action.payload;
+    },
+    updateProjectFailed(state, action) {
+      state.loading = false;
+      state.error = action.payload;
+      state.message = null;
+    },
     // reseting
     resetProjectSlice(state, action) {
       state.error = null;
@@ -104,7 +119,9 @@ export const addNewProject = (data) => async (dispatch) => {
     dispatch(projectSlice.actions.addNewProjectSuccess(response.data.message));
     dispatch(projectSlice.actions.clearAllErrors());
   } catch (error) {
-    dispatch(projectSlice.actions.addNewProjectFailed(error.response.data.message));
+    dispatch(
+      projectSlice.actions.addNewProjectFailed(error.response.data.message)
+    );
   }
 };
 
@@ -124,7 +141,25 @@ export const deleteProject = (id) => async (dispatch) => {
   }
 };
 
-
+export const updateProject = (id, newData) => async (dispatch) => {
+  dispatch(projectSlice.actions.updateProjectRequest());
+  try {
+    const { data } = await axios.put(
+      `http://localhost:4000/api/v1/project/update/${id}`,
+      newData,
+      {
+        withCredentials: true,
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+    );
+    dispatch(projectSlice.actions.updateProjectSuccess(data.message));
+    dispatch(projectSlice.actions.clearAllErrors());
+  } catch (error) {
+    dispatch(
+      projectSlice.actions.updateProjectFailed(error.response.data.message)
+    );
+  }
+};
 
 export const clearAllProjectSliceErrors = () => (dispatch) => {
   dispatch(projectSlice.actions.clearAllErrors());

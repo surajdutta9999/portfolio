@@ -66,7 +66,7 @@ export const updateProject = catchAsyncErrors(async (req, res, next) => {
     title: req.body.title,
     description: req.body.description,
     gitRepoLink: req.body.gitRepoLink,
-    projectLink: req.body.projectLinko,
+    projectLink: req.body.projectLink,
     technologies: req.body.technologies,
     stack: req.body.stack,
     deployed: req.body.deployed,

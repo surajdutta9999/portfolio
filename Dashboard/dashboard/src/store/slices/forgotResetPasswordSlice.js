@@ -62,7 +62,7 @@ export const forgotPassword = (email) => async (dispatch) => {
   } catch (error) {
     dispatch(
       forgotResetPassSlice.actions.forgotPasswordFailed(
-        error.response.data.message
+        error.response?.data?.message
       )
     );
   }
