@@ -6,14 +6,15 @@ import ProjectView from "./pages/ProjectView";
 import Footer from "./pages/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { ModeToggle } from "./components/mode-toggle";
+import "./App.css";
+import { ModeToggle } from "./components/mode-toggle";
 
 function App() {
   return (
     <>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <Router>
-          {/* <ModeToggle/> */}
+          <ModeToggle />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/project/:id" element={<ProjectView />} />
