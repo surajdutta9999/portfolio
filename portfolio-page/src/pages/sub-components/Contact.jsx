@@ -43,7 +43,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden ">
       <div className="relative mb-12">
         <h1
           className="hidden sm:flex gap-4 items-center text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.8rem] leading-[56px] md:leading-[67px] lg:leading-[90px] tracking-[15px] mx-auto w-fit font-extrabold"
@@ -78,7 +78,7 @@ const Contact = () => {
             placeholder="Enter your message..."
           />
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-end pt-5">
           {!loading ? (
             <Button className="w-full sm:w-52" type="submit">
               Send
