@@ -20,7 +20,12 @@ const ForgotPassword = () => {
   const dispatch = useDispatch();
   const navigateTo = useNavigate();
 
-  const handleForgotPassword = () => {
+  const handleForgotPassword = (e) => {
+    e.preventDefault();
+    if (email.trim() === "") {
+      toast.error("Please enter your email");
+      return;
+    }
     dispatch(forgotPassword(email));
   };
 
@@ -32,10 +37,11 @@ const ForgotPassword = () => {
     if (isAuthenticated) {
       navigateTo("/");
     }
-    if (message !== null) {
+    if (message) {
       toast.success(message);
+      setEmail("");
     }
-  }, [dispatch, isAuthenticated, error, loading]);
+  }, [dispatch, isAuthenticated, error, message, navigateTo]);
 
   return (
     <>
@@ -48,10 +54,11 @@ const ForgotPassword = () => {
                 Enter your email below to request for reset password
               </p>
             </div>
-            <div className="grid gap-4">
+            <form onSubmit={handleForgotPassword} className="grid gap-4">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
+                  id="email"
                   type="email"
                   placeholder="m@example.com"
                   value={email}
@@ -72,11 +79,11 @@ const ForgotPassword = () => {
               {loading ? (
                 <SpecialLoadingButton content={"Requesting"} />
               ) : (
-                <Button type="submit" className="w-full" onClick={handleForgotPassword}>
+                <Button type="submit" className="w-full">
                   Request for reset password
                 </Button>
               )}
-            </div>
+            </form>
           </div>
         </div>
         <div className="hidden bg-muted lg:block">

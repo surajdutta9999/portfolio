@@ -67,7 +67,7 @@ const ResetPassword = () => {
                 <Input
                   type="password"
                   value={confirmPassword}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                   required
                 />
               </div>

@@ -58,6 +58,22 @@ const skillSlice = createSlice({
       state.error = action.payload;
       state.message = null;
     },
+    // deleteSkill
+    deleteSkillRequest(state, action) {
+      state.loading = true;
+      state.error = null;
+      state.message = null;
+    },
+    deleteSkillSuccess(state, action) {
+      state.loading = false;
+      state.error = null;
+      state.message = action.payload;
+    },
+    deleteSkillFailed(state, action) {
+      state.loading = false;
+      state.error = action.payload;
+      state.message = null;
+    },
     // reseting
     resetSkillSlice(state, action) {
       state.error = null;
